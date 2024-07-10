@@ -64,13 +64,13 @@ Edit the `config/config.json` file to specify the necessary parameters. Here is 
 
 ```json
 {
+  "public_comps": ["AAPL", "GOOG", "MSFT"],
+  "grant_date": "2022-07-10",
+  "valuation_date": "2022-07-10",
+  "expiration_date": "2025-07-10",
+  "vesting_end_date": "2032-01-10",
   "stock_price": 150,
   "strike_price": 100,
-  "valuation_date": "2024-07-10",
-  "expiration_date": "2025-07-10",
-  "vesting_end_date": "2025-01-10",
-  "public_comps": ["AAPL", "GOOG", "MSFT"],
-  "grant_date": "2024-01-10",
   "frequency": "daily"
 }
 ```
