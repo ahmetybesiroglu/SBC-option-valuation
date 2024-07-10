@@ -71,7 +71,7 @@ Edit the `config/config.json` file to specify the necessary parameters. Here is 
   "vesting_end_date": "2025-01-10",
   "public_comps": ["AAPL", "GOOG", "MSFT"],
   "grant_date": "2024-01-10",
-  "frequency": "daily"  // Optional parameter: daily, weekly, or monthly
+  "frequency": "daily"
 }
 ```
 
