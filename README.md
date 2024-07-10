@@ -91,7 +91,7 @@ Edit the `config/config.json` file to specify the necessary parameters. Here is 
 Run the script to calculate the option valuation:
 
 ```bash
-python3 src/option_valuation_calculator.py
+python3 src/option_valuation.py
 ```
 
 ### Expected Output
