@@ -1,0 +1,10 @@
+{
+    "public_comps": ["BKKT", "FRGE", "VIRT", "HOOD", "COIN", "TW", "MKTX", "AMG", "APO", "ARES", "BX", "OWL", "BPT.L", "CG", "EQT.ST", "HLNE", "KKR", "EMG.L", "PGHN.SW", "PHLL.L", "SCU", "STEP", "TPG"],
+    "grant_date": "2022-03-31",
+    "valuation_date": "2022-03-31",
+    "expiration_date": "2032-03-31",
+    "vesting_end_date": "2026-03-31",
+    "stock_price": 86.29,
+    "strike_price": 86.29,
+    "frequencies": ["daily"]
+  }
