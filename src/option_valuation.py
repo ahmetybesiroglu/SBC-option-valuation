@@ -81,6 +81,7 @@ def main():
     expiration_date = config['expiration_date']
     vesting_end_date = config['vesting_end_date']
     tickers = config['public_comps']
+    frequency = config.get('frequency', 'daily')  # Use 'daily' as default frequency if not provided
     
     # Calculate years to maturity
     print("Calculating years to maturity...")
@@ -97,8 +98,7 @@ def main():
     volatilities = []
     for ticker in tickers:
         try:
-            print(f"Calculating volatility for {ticker}...")
-            volatility = calculate_volatility(ticker, start_date, end_date)
+            volatility = calculate_volatility(ticker, start_date, end_date, frequency)
             volatilities.append({'Ticker': ticker, f"{start_date} to {end_date}": volatility})
             print(f"Volatility for {ticker}: {volatility}")
         except Exception as e:
@@ -106,8 +106,6 @@ def main():
 
     # Create volatility DataFrame
     volatility_df = pd.DataFrame(volatilities)
-    print("Volatility DataFrame created:")
-    print(volatility_df)
     
     # Ensure that the columns used for mean calculation are numeric
     for col in volatility_df.columns[1:]:
@@ -115,7 +113,6 @@ def main():
 
     # Calculate the mean of volatilities
     average_volatility = volatility_df.mean(axis=0, numeric_only=True).mean() / 100
-    print(f"Average volatility: {round(average_volatility*100,2)}")
 
     # Add average volatility to the DataFrame
     average_row = {'Ticker': 'Average'}
@@ -146,8 +143,6 @@ def main():
 
     # Create yield DataFrame
     yield_df = pd.DataFrame(yields)
-    print("Yield DataFrame created:")
-    print(yield_df)
     
     known_maturities = {ticker_name: int(ticker_name.split('-')[0]) for ticker_name in treasury_tickers}
     max_maturity = max(known_maturities.values())
@@ -185,8 +180,6 @@ def main():
     # Print the interpolated DataFrame and available maturities
     print("Interpolated DataFrame:")
     print(interpolated_df)
-    print("Available maturities:")
-    print(interpolated_df.index)
 
     # Check if the required maturity exists in the DataFrame
     required_maturity = f"{years_to_maturity}-year"
@@ -218,7 +211,7 @@ def main():
 
     # Convert input data to a DataFrame with two columns
     input_df = pd.DataFrame(list(input_data.items()), columns=["", "Value"])
-    print("Input DataFrame:")
+    print("Resulting DataFrame:")
     print(input_df)
 
     # Save to Excel
